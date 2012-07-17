@@ -8,12 +8,10 @@ class karatsuba:
 	def multiply(self, x, y):
 		sx = str(x)
 		sy = str(y)
-		#print "Multiplying %s and %s" % (sx, sy)
 		nx = len(sx)
 		ny = len(sy)
 		if nx==1 or ny==1:
 			r = int(x)*int(y)
-			#print "returning " + str(r)
 			return r
 		n = nx
 		if nx>ny:
@@ -22,14 +20,11 @@ class karatsuba:
 		elif ny>nx:
 			sx = sx.rjust(ny, '0')
 			n = ny
-		#print sy
-		#print sx
 		m = n % 2
 		offset = 0
 		even = n
 		if m!=0:
 			n+=1
-			#print "N is now " + str(n)
 			offset = 1
 		floor = int(math.floor(n/2))-offset
 		ceil = int(math.ceil(n/2))-offset
@@ -38,7 +33,6 @@ class karatsuba:
 		c = sy[0:floor]
 		d = sy[ceil:n]
 		r = ((10**n)*self.multiply(a,c)) + ((10**(n/2))*(self.multiply(a,d) + self.multiply(b,c))) + self.multiply(b,d)
-		#print "returning" + str(r)
 		return r
 
 
